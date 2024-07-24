@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+  username: develop
+  password: develop
+development:
+  <<: *default
+  database: afbank_development
+test:
+  <<: *default
+  database: afbank_test
+production:
+  <<: *default
+  url: <%= ENV.fetch("AFBANK_DATABASE_URL", "") %>

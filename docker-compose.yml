@@ -1,0 +1,25 @@
+# Docker commpose to have a quick setup for people just interested in running the app,
+# for dev I'd stick to local environment
+
+services:
+  dev:
+    build: .
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
+    depends_on:
+      - db
+      - redis
+    ports:
+      - "3001:3000"
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/afbank_development
+      SIDEKIQ_REDIS_URL: redis://redis:6380/1
+  db:
+    image: postgres:15.7
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  redis:
+    image: redis:latest

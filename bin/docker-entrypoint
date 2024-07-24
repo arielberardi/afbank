@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+if [ "$RAILS_ENV" = "development" ]; then
+  echo "Preparing database..."
+  bundle exec rake db:prepare
+fi
+
+exec "${@}"

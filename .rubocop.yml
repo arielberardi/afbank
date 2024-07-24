@@ -1,0 +1,26 @@
+require:
+  - rubocop-rails
+  - rubocop-factory_bot
+  - rubocop-capybara
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "db/**/*"
+    - "Gemfile.lock"
+    - "bin/*"
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
