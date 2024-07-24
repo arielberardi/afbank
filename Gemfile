@@ -37,6 +37,8 @@ end
 gem 'bootstrap'
 gem 'brakeman'
 gem 'bundler-audit'
+gem 'cancancan'
+gem 'devise'
 gem 'rails-i18n'
 gem 'rubocop'
 gem 'rubocop-capybara'
