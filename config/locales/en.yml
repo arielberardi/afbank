@@ -1,4 +1,37 @@
 en:
+  views:
+    devise:
+      confirmations:
+        new:
+          title: "Resend confirmation email"
+          submit: "Resend email"
+          sign_in: "Back to Sign in"
+      passwords:
+        new:
+          title: "Reset your password"
+          submit: "Reset"
+          sign_in: "Back to Sign in"
+        edit:
+          title: "Change your password"
+          submit: "Update"
+          sign_in: "Sign in"
+          new_password: "New Password"
+          confirm_new_password: "Confirm New Password"
+      registrations:
+        new:
+          title: "Create account"
+          submit: "Sign up"
+          sign_in: "Already have an account?"
+      sessions:
+        new:
+          title: "Please sign in"
+          submit: "Sign in"
+          sign_up: "Don't have an account?"
+          forgot_password: "Forgot password?"
+      unlock:
+        new:
+          title: "Unlock account"
+          submit: "Send instructions"
   activerecord:
     attributes:
       user:

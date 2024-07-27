@@ -85,7 +85,7 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  test 'can not be under 18 years' do
+  test 'must be over 18 years' do
     @user.birth_date = 17.years.ago
     assert_not @user.valid?
   end
@@ -99,5 +99,10 @@ class UserTest < ActiveSupport::TestCase
     end
 
     assert_match(/birth_date_age_check/, error.message)
+  end
+
+  test 'method fullname returns the first and last name separated by a space' do
+    fullname = "#{@user.first_name} #{@user.last_name}"
+    assert_equal @user.fullname, fullname
   end
 end

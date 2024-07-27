@@ -1,0 +1,7 @@
+<p>Welcome <%= User.find_by(email: @email).fullname %>!</p>
+<p>Please confirm your account's email through the link below:</p>
+<p><%= link_to 'Confirm my account', user_confirmation_url(confirmation_token: @token) %></p>
+<p>Best Regards,<br/>
+  <b>AFBank</b>
+</p>
+<%= image_tag 'afbank-logo.png', width: 400, height: 140 %>

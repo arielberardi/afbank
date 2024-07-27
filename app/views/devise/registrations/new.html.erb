@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center min-vh-100">
+    <div class="col-12 col-lg-8 mx-auto">
+      <div class="card">
+        <div class="card-body shadow">
+          <div class="text-center mb-3">
+            <%= image_tag 'afbank-logo.png', alt: 'bank-logo', width: 200, height: 70 %>
+            <h3 class="h3 mt-4"><%= t('views.devise.registrations.new.title') %></h3>
+          </div>
+          <%= simple_form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
+            <%= f.error_notification %>
+            <div class="row">
+              <div class="col-12 col-lg">
+                <%= f.input :username, autofocus: true, input_html: { autocomplete: 'username' } %>
+                <%= f.input :first_name, required: true %>
+                <%= f.input :last_name, required: true %>
+                <%= f.input :birth_date, as: :date,
+                                         start_year: Date.today.year - 18,
+                                         end_year: Date.today.year - 120,
+                                         order: [:day, :month, :year],
+                                         required: true %>
+                <%= f.input :phone_number, required: true %>
+              </div>
+              <div class="col-12 col-lg">
+                <%= f.input :email, input_html: { autocomplete: 'email' } %>
+                <%= f.input :password, input_html: { autocomplete: 'new-password' } %>
+                <%= f.input :password_confirmation, input_html: { autocomplete: 'new-password' } %>
+              </div>
+            </div>
+            <div class="form-actions mt-3">
+              <%= f.button :submit,
+                           t('views.devise.registrations.new.submit'),
+                           class: 'btn btn-primary shadow w-100 py-2' %>
+            </div>
+            <div class="text-center mt-3">
+              <%= link_to t('views.devise.registrations.new.sign_in'), new_user_session_path %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

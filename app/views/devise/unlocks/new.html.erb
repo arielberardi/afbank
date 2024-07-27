@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center min-vh-100">
+    <div class="col-12 col-sm-8 col-md-6 col-lg-5 mx-auto">
+      <div class="card">
+        <div class="card-body shadow">
+          <div class="text-center mb-3">
+            <%= image_tag 'afbank-logo.png', alt: 'bank-logo', width: 200, height: 70 %>
+            <h3 class="h3 mt-4"><%= t('views.devise.unlock.new.title') %></h3>
+          </div>
+          <%= simple_form_for(resource, as: resource_name, url: user_unlock_path, html: { method: :post }) do |f| %>
+            <%= f.error_notification %>
+            <%= f.full_error :unlock_token %>
+            <div class="form-inputs">
+              <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: 'email' } %>
+            </div>
+            <div class="form-actions mt-4">
+              <%= f.button :submit,
+                           t('views.devise.unlock.new.submit'),
+                           class: 'btn btn-primary shadow w-100 py-2' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center min-vh-100">
+    <div class="col-12 col-sm-8 col-md-6 col-lg-5 mx-auto">
+      <div class="card">
+        <div class="card-body shadow">
+          <div class="text-center mb-3">
+            <%= image_tag 'afbank-logo.png', alt: 'bank-logo', width: 200, height: 70 %>
+            <h3 class="h3 mt-4"><%= t('views.devise.confirmations.new.title') %></h3>
+          </div>
+          <%= simple_form_for(resource, as: resource_name,
+                              url: user_confirmation_path, html: { method: :post }) do |f| %>
+            <%= f.error_notification %>
+            <%= f.full_error :confirmation_token %>
+            <div class="form-inputs">
+              <%= f.input :email,
+                required: true,
+                autofocus: true,
+                value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+                input_html: { autocomplete: 'email' } %>
+            </div>
+            <div class="form-actions mt-4">
+              <%= f.button :submit,
+                            t('views.devise.confirmations.new.submit'),
+                            class: 'btn btn-primary shadow w-100 py-2' %>
+            </div>
+            <div class="text-center mt-3">
+              <%= link_to t('views.devise.confirmations.new.sign_in'), new_user_session_path %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
