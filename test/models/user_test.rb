@@ -25,6 +25,10 @@ class UserTest < ActiveSupport::TestCase
     assert validate_uniqueness_of(:email)
   end
 
+  test 'has many accounts' do
+    assert have_many(:accounts)
+  end
+
   test 'email must have a valid format' do
     invalid_emails = [
       'test',

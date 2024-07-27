@@ -16,6 +16,8 @@ class User < ApplicationRecord
     with: /(?:\+44|0)7\d{9}|(?:\+44|0)2\d{9}|(?:\+44|0)3\d{9}|(?:\+44|0)8\d{9}|(?:\+44|0)1\d{9}/
   }
 
+  has_many :accounts, dependent: :destroy
+
   def fullname
     "#{first_name} #{last_name}"
   end
