@@ -2,7 +2,6 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'confidence_check/for_minitest'
-require 'with_clues'
 
 module ActiveSupport
   class TestCase
@@ -14,8 +13,8 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
     include FactoryBot::Syntax::Methods
-    include WithClues::Method
     include ConfidenceCheck::ForMinitest
+    include Devise::Test::IntegrationHelpers
   end
 end
 

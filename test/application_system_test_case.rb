@@ -21,8 +21,6 @@ Capybara.register_driver :root_headless_chrome do |app|
   )
 end
 
-require 'support/with_clues'
-
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :rack_test
 end

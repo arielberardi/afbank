@@ -49,3 +49,5 @@ en:
           attributes:
             birth_date:
               invalid: "is not more than 18 years ago, user is not an adult"
+  errors:
+    unauthorized: "Unauthorized access, if is an error please contact customer support"

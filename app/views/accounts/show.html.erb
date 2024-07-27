@@ -1,10 +1,17 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @account %>
-
-<div>
-  <%= link_to "Edit this account", edit_account_path(@account) %> |
-  <%= link_to "Back to accounts", accounts_path %>
-
-  <%= button_to "Destroy this account", @account, method: :delete %>
+<!-- A place with the Account information -->
+<div class="container bg-success shadow text-light p-3">
+  <div class="row justify-content-between align-items-center">
+    <div class="col text-start">
+      <h2 class="h2"><%= @account.user.fullname %></h2>
+      <p class="h4 fw-bold mt-2"><%= @account.account_type.capitalize %> account</p>
+    </div>
+    <div class="col text-end">
+      <p class="h2">Account #<%= @account.id %></p>
+      <p class="h4 fw-bold mt-2">Total: <%= "#{@account.balance}#{currency_to_symbol(@account.currency)}" %></p>
+    </div>
+  </div>
 </div>
+<p class="container alert alert-info text-center">Comming soon: Transactions with Filter and paginations</p>
+<!-- Filter to search for specific transactions -->
+<!-- Then table with all transactions for given account (partials) -->
+<!-- Pagination of transactions -->

@@ -33,7 +33,6 @@ group :test do
   gem 'confidence-check'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
-  gem 'with_clues'
 end
 
 gem 'bootstrap'

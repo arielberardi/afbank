@@ -1,47 +1,21 @@
-require "application_system_test_case"
+require 'application_system_test_case'
 
 class AccountsTest < ApplicationSystemTestCase
   setup do
-    @account = accounts(:one)
+    @account = FactoryBot.create(:account)
+    sign_in @account.user
   end
 
-  test "visiting the index" do
-    visit accounts_url
-    assert_selector "h1", text: "Accounts"
-  end
-
-  test "should create account" do
-    visit accounts_url
-    click_on "New account"
-
-    fill_in "Balance", with: @account.balance
-    fill_in "Currency", with: @account.currency
-    fill_in "Type", with: @account.type
-    fill_in "User", with: @account.user_id
-    click_on "Create Account"
-
-    assert_text "Account was successfully created"
-    click_on "Back"
-  end
-
-  test "should update Account" do
+  test 'account has a page with its details' do
     visit account_url(@account)
-    click_on "Edit this account", match: :first
-
-    fill_in "Balance", with: @account.balance
-    fill_in "Currency", with: @account.currency
-    fill_in "Type", with: @account.type
-    fill_in "User", with: @account.user_id
-    click_on "Update Account"
-
-    assert_text "Account was successfully updated"
-    click_on "Back"
+    assert_text @account.balance
   end
 
-  test "should destroy Account" do
-    visit account_url(@account)
-    click_on "Destroy this account", match: :first
+  test 'account can be visited only by the owner' do
+    new_account = FactoryBot.create(:account)
+    visit account_url(new_account)
 
-    assert_text "Account was successfully destroyed"
+    assert page.has_content?(I18n.t('errors.unauthorized'))
+    assert_current_path authenticated_root_path
   end
 end
