@@ -7,15 +7,23 @@
             <%= image_tag 'afbank-logo.png', alt: 'bank-logo', width: 200, height: 70 %>
             <h3 class="h3 mt-4"><%= t('views.devise.sessions.new.title') %></h3>
           </div>
-          <%= simple_form_for(resource, as: resource_name, url: user_session_path) do |f| %>
-            <%= f.input :username,
-                autofocus: true,
-                input_html: { autocomplete: 'username' } %>
-            <%= f.input :password,
-                input_html: { autocomplete: 'current-password' } %>
+          <%= form_with model: resource, url: user_session_path, class: 'simple_form new_user' do |f| %>
+            <div class="mb-3 string user_username">
+              <%= f.label :username, class: 'form-label string' %>
+              <%= f.text_field :username, class: 'form-control string', autocomplete: 'username', autofocus: true %>
+            </div>
+            <div class="mb-3 string user_username">
+              <%= f.label :password, class: 'form-label string' %>
+              <%= f.password_field :password, class: 'form-control string', autocomplete: 'username', autofocus: true %>
+            </div>
             <div class="row mb-6">
               <div class="col">
-                <%= f.input :remember_me, as: :boolean %>
+                <fieldset class="mb-3 boolean optional user_remember_me">
+                  <div class="form-check">
+                    <%= f.check_box :remember_me, as: :boolean, class: 'form-check-input boolean optional' %>
+                    <%= f.label :remember_me, class: 'form-check-label boolean optional' %>
+                  </div>
+                </fieldset>
               </div>
               <div class="col text-end">
                 <%= link_to t('views.devise.sessions.new.forgot_password'),
@@ -24,8 +32,7 @@
               </div>
             </div>
             <div class="form-actions mt-3">
-              <%= f.button :submit,
-                           t('views.devise.sessions.new.submit'),
+              <%= f.submit t('views.devise.sessions.new.submit'),
                            class: 'btn btn-primary shadow w-100 py-2' %>
             </div>
             <div class="text-center mt-3">
