@@ -32,6 +32,11 @@ en:
         new:
           title: "Unlock account"
           submit: "Send instructions"
+    account:
+      number: "Account #%{number}"
+      type: "%{type} account"
+      show:
+        total: "Total: %{balance}%{currency}"
   activerecord:
     attributes:
       user:
@@ -43,6 +48,14 @@ en:
         password: "Password"
         password_confirmation: "Password Confirmation"
         birth_date: "Birthdate"
+      account:
+        id: "#"
+        account_type: "Account type"
+        type:
+          savings: "Savings"
+          checking: "Checking"
+        balance_cents: "Balance"
+        currency: "Currency"
     errors:
       models:
         user:
@@ -51,3 +64,4 @@ en:
               invalid: "is not more than 18 years ago, user is not an adult"
   errors:
     unauthorized: "Unauthorized access, if is an error please contact customer support"
+    general: "Something went wrong with your last operation, please contact customer support"
