@@ -24,3 +24,6 @@ Metrics/AbcSize:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+FactoryBot/AssociationStyle:
+  Enabled: false

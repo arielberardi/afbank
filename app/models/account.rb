@@ -8,7 +8,7 @@ class Account < ApplicationRecord
   validates :currency, presence: true
 
   def balance
-    return 0 if balance_cents.zero?
+    return 0 if balance_cents.zero? || balance_cents.nil?
 
     balance_cents / 100
   end
