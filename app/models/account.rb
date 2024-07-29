@@ -3,9 +3,10 @@ class Account < ApplicationRecord
   enum currency: { gbp: 'gbp', usd: 'usd', eur: 'eur' }
 
   belongs_to :user
+  has_many :transactions, class_name: 'Transaction', foreign_key: 'sender_id', inverse_of: :sender, dependent: :destroy
 
-  validates :account_type, presence: true
-  validates :currency, presence: true
+  validates :account_type, presence: true, inclusion: { in: account_types.keys }
+  validates :currency, presence: true, inclusion: { in: currencies.keys }
 
   def balance
     return 0 if balance_cents.zero? || balance_cents.nil?

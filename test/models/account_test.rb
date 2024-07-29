@@ -18,6 +18,10 @@ class AccountTest < ActiveSupport::TestCase
     assert belong_to(:user)
   end
 
+  test 'have many transations' do
+    assert have_many(:transactions)
+  end
+
   test '#balance returns balance with cents' do
     balance = @account.balance_cents / 100
     assert_equal @account.balance, balance.round

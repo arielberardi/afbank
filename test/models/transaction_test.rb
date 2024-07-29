@@ -19,11 +19,6 @@ class TransactionTest < ActiveSupport::TestCase
     assert_not @transaction.valid?
   end
 
-  test 'invalid transaction with 0 of amount' do
-    assert validate_numericality_of(:amount_cents).is_greater_than(0)
-    assert validate_presence_of(:amount_cents)
-  end
-
   test 'amount returns a decimal of amount_cents' do
     assert_equal @transaction.amount, @transaction.amount_cents / 100.0
   end

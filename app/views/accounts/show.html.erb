@@ -13,7 +13,8 @@
     </div>
   </div>
 </div>
-<p class="container alert alert-info text-center">Comming soon: Transactions with Filter and paginations</p>
 <!-- Filter to search for specific transactions -->
-<!-- Then table with all transactions for given account (partials) -->
+<div class="list-group">
+  <%= render @account.transactions %>
+</div>
 <!-- Pagination of transactions -->

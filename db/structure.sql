@@ -75,7 +75,7 @@ CREATE TABLE public.schema_migrations (
 CREATE TABLE public.transactions (
     id bigint NOT NULL,
     sender_id bigint NOT NULL,
-    recipient_id bigint NOT NULL,
+    recipient character varying NOT NULL,
     amount_cents integer NOT NULL,
     status character varying DEFAULT 'pending'::character varying NOT NULL,
     created_at timestamp(6) with time zone NOT NULL,
@@ -219,13 +219,6 @@ CREATE INDEX index_accounts_on_user_id ON public.accounts USING btree (user_id);
 
 
 --
--- Name: index_transactions_on_recipient_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_transactions_on_recipient_id ON public.transactions USING btree (recipient_id);
-
-
---
 -- Name: index_transactions_on_sender_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -265,14 +258,6 @@ CREATE UNIQUE INDEX index_users_on_unlock_token ON public.users USING btree (unl
 --
 
 CREATE UNIQUE INDEX index_users_on_username ON public.users USING btree (username);
-
-
---
--- Name: transactions fk_rails_08ac89bc18; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.transactions
-    ADD CONSTRAINT fk_rails_08ac89bc18 FOREIGN KEY (recipient_id) REFERENCES public.accounts(id);
 
 
 --

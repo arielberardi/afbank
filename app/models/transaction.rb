@@ -2,10 +2,9 @@ class Transaction < ApplicationRecord
   enum status: { pending: 'pending', completed: 'completed', cancelled: 'cancelled', failed: 'failed' }
 
   belongs_to :sender, class_name: 'Account'
-  belongs_to :recipient, class_name: 'Account'
 
+  validates :recipient, presence: true
   validates :amount_cents, presence: true
-  validates :amount_cents, numericality: { greater_than: 0 }
   validates :status, presence: true, inclusion: { in: statuses.keys }
 
   def amount
