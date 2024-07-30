@@ -26,4 +26,11 @@ class AccountsTest < ApplicationSystemTestCase
     assert page.has_content?(I18n.t('errors.general'))
     assert_current_path authenticated_root_path
   end
+
+  test 'account shows the transactions' do
+    FactoryBot.create(:transaction, sender: @account)
+    visit account_url(@account)
+
+    assert_text @account.transactions.first.recipient
+  end
 end
