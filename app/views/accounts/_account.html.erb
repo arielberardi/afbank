@@ -2,13 +2,17 @@
   <div class="card-body text-center">
     <div class="card-title">
       <p class="h3">
-        <%= "#{account.balance}#{currency_to_symbol(account.currency)}" %>
+        <%= money_with_currency(account.balance, account.currency) %>
       </p>
     </div>
     <div class="card-subtitle">
       <p><%= t('views.account.number', number: account.id) %></p>
     </div>
-    <p><%= t('views.account.type', type: account_type_i18n(account.account_type)) %></p>
+    <p>
+      <%= t('views.account.type',
+              type: t("activerecord.attributes.account.type.#{account.account_type.downcase}")
+            ) %>
+    </p>
     <%= link_to account, class: 'btn btn-light' do %>
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67"/>

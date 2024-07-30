@@ -11,7 +11,7 @@
       </p>
     </div>
     <div class="col-4 d-flex justify-content-end">
-      <p class="h2"><%= "#{transaction.amount} #{currency_to_symbol(transaction.sender.currency)}" %></p>
+      <p class="h2"><%= money_with_currency(transaction.amount, transaction.sender.currency) %></p>
     </div>
   </div>
 <% end %>

@@ -27,3 +27,6 @@ Style/FrozenStringLiteralComment:
 
 FactoryBot/AssociationStyle:
   Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
