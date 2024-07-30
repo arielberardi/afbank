@@ -36,7 +36,7 @@ en:
       number: "Account #%{number}"
       type: "%{type} account"
       show:
-        total: "Total: %{balance}%{currency}"
+        total: "Balance: %{balance}%{currency}"
     transaction:
       show:
         title: "Transaction #%{number} details"

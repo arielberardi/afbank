@@ -17,7 +17,7 @@ module ApplicationHelper
   def image_for_transaction_status(status)
     configuration = {
       'pending' => { image: 'pending.svg', class: 'bg-info' },
-      'completed' => { image: 'complete.svg', class: '' },
+      'completed' => { image: 'completed.svg', class: '' },
       'cancelled' => { image: 'cancelled.svg', class: '' },
       'failed' => { image: 'failed.svg', class: 'bg-danger' }
     }
