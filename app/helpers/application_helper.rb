@@ -8,4 +8,8 @@ module ApplicationHelper
 
     "#{amount} #{currency_symbol[currency.upcase]}"
   end
+
+  def active?(path)
+    'active' if current_page?(path)
+  end
 end

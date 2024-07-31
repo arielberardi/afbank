@@ -9,7 +9,10 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <div class="container">
+    <% if current_user %>
+      <%= render partial: 'layouts/navbar' %>
+    <% end %>
+    <div class="container-fluid w-sm-100 container-sm fixed-top mt-sm-2 ">
       <div class="row justify-content-start mt-md-2">
         <% flash.each do |type, msg| %>
           <% unless msg.blank? %>

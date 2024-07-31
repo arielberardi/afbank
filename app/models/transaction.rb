@@ -1,5 +1,6 @@
 class Transaction < ApplicationRecord
-  enum status: { pending: 'pending', completed: 'completed', cancelled: 'cancelled', failed: 'failed' }
+  enum status: { pending: 'pending', completed: 'completed', cancelled: 'cancelled', failed: 'failed' },
+       default: 'pending'
 
   belongs_to :sender, class_name: 'Account'
 
