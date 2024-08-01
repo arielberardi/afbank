@@ -4,6 +4,7 @@ class Account < ApplicationRecord
 
   belongs_to :user
   has_many :transactions, class_name: 'Transaction', foreign_key: 'sender_id', inverse_of: :sender, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 
   validates :account_type, presence: true, inclusion: { in: account_types.keys }
   validates :currency, presence: true, inclusion: { in: currencies.keys }

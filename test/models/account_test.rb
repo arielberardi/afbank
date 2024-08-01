@@ -6,7 +6,7 @@ class AccountTest < ActiveSupport::TestCase
   end
 
   test 'can create a new account' do
-    @account.valid?
+    assert @account.valid?
   end
 
   test 'type and currency must be present' do
@@ -20,6 +20,10 @@ class AccountTest < ActiveSupport::TestCase
 
   test 'have many transations' do
     assert have_many(:transactions)
+  end
+
+  test 'have many contacts' do
+    assert have_many(:contacts)
   end
 
   test '#balance returns balance with cents' do

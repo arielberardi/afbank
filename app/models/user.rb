@@ -17,6 +17,7 @@ class User < ApplicationRecord
   }
 
   has_many :accounts, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 
   def fullname
     "#{first_name} #{last_name}"

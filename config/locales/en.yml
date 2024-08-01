@@ -45,6 +45,21 @@ en:
         from_account: "From account"
         payed_to: "Payed to"
         date: "Date"
+    contacts:
+      index:
+        alias: "Alias"
+        account: "Account"
+        full_name: "Full name"
+        add_contact: "Add contact"
+      edit:
+        title: "Update contact"
+      new:
+        title: "Add contact"
+    navbar:
+      home: "Home"
+      transfer: "Transfer"
+      contacts: "Contacts"
+      sign_out: "Sign out"
   activerecord:
     attributes:
       user:
@@ -70,6 +85,9 @@ en:
           cancelled: "Cancelled"
           completed: "Completed"
           failed: "Failed"
+      contact:
+        name: "Alias"
+        account: "Account Number"
     errors:
       models:
         user:
@@ -81,3 +99,9 @@ en:
     general: "Something went wrong with your last operation, please contact customer support"
   actions:
     back: "Back"
+    cancel:
+  controller:
+    contacts:
+      created: "Contact was successfully created."
+      updated: "Contact was successfully updated."
+      deleted: "Contact was successfully deleted."

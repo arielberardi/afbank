@@ -1,3 +1,10 @@
 <%= turbo_frame_tag 'modal' do %>
-  <%= render(TransactionCardComponent.new(transaction: @transaction)) %>
+  <div class="modal-backdrop show" data-controller="modals" data-action="click->modals#close"></div>
+  <div class="modal show d-block" data-controller="modals" data-action="keydown.esc@document->modals#close">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <%= render(TransactionCardComponent.new(transaction: @transaction)) %>
+      </div>
+    </div>
+  </div>
 <% end %>

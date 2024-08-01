@@ -1,46 +1,40 @@
-<div class="container fixed-top mt-2 mt-sm-5">
-  <div class="row justify-content-center min-vh-100">
-    <div class="col-md-4">
-      <div class="card shadow">
-        <%= image_tag @image[:image], class: @image[:class] %>
-        <div class="card-body">
-          <h5 class="card-title text-center">
-            <%= @number %>
-          </h5>
-          <ul class="list-group">
-            <li class="d-flex w-100 justify-content-between">
-              <p><%= t('views.transaction.show.status') %></p>
-              <p class="fw-bold">
-                <%= @status %>
-              </p>
-            </li>
-            <li class="d-flex w-100 justify-content-between">
-              <p><%= t('views.transaction.show.amount') %></p>
-              <p class="fw-bold">
-                <%= helpers.money_with_currency(@transaction.amount, @transaction.sender.currency) %>
-              </p>
-            </li>
-            <li class="d-flex w-100 justify-content-between">
-              <p><%= t('views.transaction.show.from_account') %></p>
-              <p class="fw-bold">#<%= @transaction.sender.id %></p>
-            </li>
-            <li class="d-flex w-100 justify-content-between">
-              <p><%= t('views.transaction.show.payed_to') %></p>
-              <p class="fw-bold"><%= @transaction.recipient %></p>
-            </li>
-            <li class="d-flex w-100 justify-content-between">
-              <p><%= t('views.transaction.show.date') %></p>
-              <p class="fw-bold"><%= @date %></p>
-            </li>
-          </ul>
-          <%= link_to t('actions.back'), '#',
+<div class="card shadow">
+  <%= image_tag @image[:image], class: "card-img-top #{@image[:class]}", alt: @image[:image] %>
+  <div class="card-body">
+    <h5 class="card-title text-center">
+      <%= @number %>
+    </h5>
+    <ul class="list-group">
+      <li class="d-flex w-100 justify-content-between">
+        <p><%= t('views.transaction.show.status') %></p>
+        <p class="fw-bold">
+          <%= @status %>
+        </p>
+      </li>
+      <li class="d-flex w-100 justify-content-between">
+        <p><%= t('views.transaction.show.amount') %></p>
+        <p class="fw-bold">
+          <%= helpers.money_with_currency(@transaction.amount, @transaction.sender.currency) %>
+        </p>
+      </li>
+      <li class="d-flex w-100 justify-content-between">
+        <p><%= t('views.transaction.show.from_account') %></p>
+        <p class="fw-bold">#<%= @transaction.sender.id %></p>
+      </li>
+      <li class="d-flex w-100 justify-content-between">
+        <p><%= t('views.transaction.show.payed_to') %></p>
+        <p class="fw-bold"><%= @transaction.recipient %></p>
+      </li>
+      <li class="d-flex w-100 justify-content-between">
+        <p><%= t('views.transaction.show.date') %></p>
+        <p class="fw-bold"><%= @date %></p>
+      </li>
+    </ul>
+    <%= link_to t('actions.back'), '#',
                       class: 'card-link',
                       data: {
                         controller: 'modals',
                         action: 'click->modals#close keydown.esc@document->modals#close'
                       } %>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

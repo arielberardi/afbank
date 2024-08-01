@@ -9,16 +9,16 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav ms-auto">
       <li class="nav-item">
-        <%= link_to 'Home', authenticated_root_path, class: "nav-link #{active?(authenticated_root_path)}" %>
+        <%= link_to t('views.navbar.home'), authenticated_root_path, class: "nav-link #{active?(authenticated_root_path)}" %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Transfer', '#', class: "nav-link #{active?('#')}" %>
+        <%= link_to t('views.navbar.transfer'), '#', class: "nav-link #{active?('#')}" %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Contacts', '#', class: "nav-link #{active?('#')}" %>
+        <%= link_to t('views.navbar.contacts'), contacts_path, class: "nav-link #{active?('#')}" %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Sign out', destroy_user_session_path,
+        <%= link_to t('views.navbar.sign_out'), destroy_user_session_path,
                                 class: 'btn btn-outline-secondary',
                                 data: { turbo_method: :delete } %>
       </li>

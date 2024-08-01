@@ -10,4 +10,5 @@
 
 user = FactoryBot.create(:user, username: 'testuser')
 account = FactoryBot.create(:account, user: user)
+contact = FactoryBot.create(:contact, user: user)
 FactoryBot.create_list(:transaction, 3, sender: account)

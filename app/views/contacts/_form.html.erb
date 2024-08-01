@@ -1,0 +1,34 @@
+<div class="modal-backdrop show" data-controller="modals" data-action="click->modals#close"></div>
+<div class="modal show d-block" data-controller="modals" data-action="keydown.esc@document->modals#close">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow border">
+      <div class="modal-header">
+        <h5 class="modal-title"><%= title %></h5>
+        <%= button_tag '', class: 'btn-close', data: {
+                      controller: 'modals',
+                      action: 'click->modals#close'
+                    } %>
+      </div>
+      <%= simple_form_for(contact) do |f| %>
+        <div class="modal-body">
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <div class="form-inputs">
+            <%= f.input :name, label: t('activerecord.attributes.contacts.name') %>
+            <%= f.input :account_id, label: t('activerecord.attributes.contacts.account'), required: true %>
+          </div>
+          <!-- We should add a turbo frame/stream that loads the account details -->
+        </div>
+        <div class="modal-footer">
+          <%= f.button :submit, class: 'btn btn-primary' %>
+          <%= link_to t('actions.cancel'), '#',
+                    class: 'btn btn-secondary',
+                    data: {
+                      controller: 'modals',
+                      action: 'click->modals#close'
+                    } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
