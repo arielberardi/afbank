@@ -4,29 +4,24 @@
     <div class="modal-content shadow border">
       <div class="modal-header">
         <h5 class="modal-title"><%= title %></h5>
-        <%= button_tag '', class: 'btn-close', data: {
-                      controller: 'modals',
-                      action: 'click->modals#close'
-                    } %>
+        <%= button_tag '', class: 'btn-close', data: { controller: 'modals', action: 'click->modals#close' } %>
       </div>
-      <%= simple_form_for(contact) do |f| %>
+      <%= simple_form_for(contact, html: { data: { controller: 'account-preview' } }) do |f| %>
         <div class="modal-body">
           <%= f.error_notification %>
           <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
           <div class="form-inputs">
-            <%= f.input :name, label: t('activerecord.attributes.contacts.name') %>
-            <%= f.input :account_id, label: t('activerecord.attributes.contacts.account'), required: true %>
+            <%= f.input :name, label: t('activerecord.attributes.contact.name') %>
+            <%= f.input :account_id, label: t('activerecord.attributes.contact.account'), required: true,
+              input_html: { data: { action: 'input->account-preview#inputAccountId' } } %>
           </div>
-          <!-- We should add a turbo frame/stream that loads the account details -->
+          <p class="fs-6 lh-sm" id="account-detail" data-account-preview-target="accountDetail"></p>
         </div>
         <div class="modal-footer">
           <%= f.button :submit, class: 'btn btn-primary' %>
           <%= link_to t('actions.cancel'), '#',
                     class: 'btn btn-secondary',
-                    data: {
-                      controller: 'modals',
-                      action: 'click->modals#close'
-                    } %>
+                    data: { controller: 'modals', action: 'click->modals#close' } %>
         </div>
       <% end %>
     </div>

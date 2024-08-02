@@ -6,6 +6,14 @@ class AccountsController < ApplicationController
   end
 
   def show
-    @account = current_user.accounts.find(params[:id])
+    respond_to do |format|
+      format.html do
+        @account = current_user.accounts.find(params[:id])
+      end
+      format.json do
+        account = Account.find(params[:id])
+        render json: { full_name: account.user.fullname }
+      end
+    end
   end
 end
