@@ -7,6 +7,10 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_tag do %>
+      <!-- Easy way to make available locals in stimulus controllers -->
+      window.I18n = <%= t("views").to_json.html_safe %>
+    <% end %>
   </head>
   <body>
     <% if current_user %>

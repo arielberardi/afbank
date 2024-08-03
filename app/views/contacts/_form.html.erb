@@ -24,7 +24,8 @@
           </div>
           <p class="fs-6 lh-sm text-success" id="account-detail" data-account-preview-target="accountDetail">
             <% if @contact.persisted? %>
-              Account Owner: <%= @contact.account.user.fullname %>
+              <%= t('views.contacts.form.account_owner') %>
+              <%= @contact.account.user.fullname %>
             <% end %>
           </p>
         </div>

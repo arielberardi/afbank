@@ -55,6 +55,9 @@ en:
         title: "Update contact"
       new:
         title: "Add contact"
+      form:
+        account_not_found: "Account not found"
+        account_owner: "Account's owner: "
     navbar:
       home: "Home"
       transfer: "Transfer"

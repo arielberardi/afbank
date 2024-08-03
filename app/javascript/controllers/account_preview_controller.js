@@ -39,13 +39,13 @@ export default class extends Controller {
       }
 
       const data = await response.json();
-      this.accountDetailTarget.innerText = `Account Owner: ${data.full_name}`;
+      this.accountDetailTarget.innerText = `${window.I18n.contacts.form.account_owner} ${data.full_name}`;
       this.accountDetailTarget.style.display = "block";
       this.accountDetailTarget.classList.remove("invalid-feedback");
       this.accountDetailTarget.classList.add("text-success");
       this.accountValid = true;
     } catch (error) {
-      this.accountDetailTarget.innerText = "Account not found";
+      this.accountDetailTarget.innerText = `${window.I18n.contacts.form.account_not_found}`;
       this.accountDetailTarget.style.display = "block";
       this.accountDetailTarget.classList.add("invalid-feedback");
       this.accountDetailTarget.classList.remove("text-success");
@@ -53,4 +53,3 @@ export default class extends Controller {
     }
   }
 }
-// TODO: How to add locals to this part?
