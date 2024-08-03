@@ -6,7 +6,7 @@ class TransactionsTest < ApplicationSystemTestCase
     sign_in @transaction.sender.user
   end
 
-  test 'show transaction and its information' do
+  test 'show page with transactions details' do
     visit transaction_url(@transaction)
 
     assert_text @transaction.id

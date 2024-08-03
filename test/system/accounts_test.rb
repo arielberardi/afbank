@@ -6,7 +6,7 @@ class AccountsTest < ApplicationSystemTestCase
     sign_in @account.user
   end
 
-  test 'index page with all accounts sumary' do
+  test 'show page with accounts sumary' do
     other_account = FactoryBot.create(:account, user: @account.user)
 
     visit accounts_url
@@ -27,7 +27,7 @@ class AccountsTest < ApplicationSystemTestCase
     assert_current_path authenticated_root_path
   end
 
-  test 'account shows the transactions' do
+  test 'show page with accounts transactions' do
     FactoryBot.create(:transaction, sender: @account)
     visit account_url(@account)
 
