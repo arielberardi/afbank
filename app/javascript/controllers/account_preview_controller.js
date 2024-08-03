@@ -1,13 +1,19 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["accountDetail"];
+  static targets = ["accountDetail", "accountField"];
 
   connect() {
-    this.accountDetailTarget.style.display = "none";
     this.debounceTimeout = null;
-    this.accountDetailTarget.innerText = "";
-    this.accountValid = false;
+
+    if (this.accountFieldTarget.value) {
+      this.accountDetailTarget.style.display = "block";
+      this.accountValid = true;
+    } else {
+      this.accountDetailTarget.style.display = "none";
+      this.accountDetailTarget.innerText = "";
+      this.accountValid = false;
+    }
   }
 
   inputAccountId(e) {

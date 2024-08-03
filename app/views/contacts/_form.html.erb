@@ -12,10 +12,21 @@
           <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
           <div class="form-inputs">
             <%= f.input :name, label: t('activerecord.attributes.contact.name') %>
-            <%= f.input :account_id, label: t('activerecord.attributes.contact.account'), required: true,
-              input_html: { data: { action: 'input->account-preview#inputAccountId' } } %>
+            <%= f.input :account_id,
+                        label: t('activerecord.attributes.contact.account'),
+                        required: true,
+                        input_html: {
+                          data: {
+                            action: 'input->account-preview#inputAccountId',
+                            account_preview_target: 'accountField'
+                          }
+                        } %>
           </div>
-          <p class="fs-6 lh-sm" id="account-detail" data-account-preview-target="accountDetail"></p>
+          <p class="fs-6 lh-sm text-success" id="account-detail" data-account-preview-target="accountDetail">
+            <% if @contact.persisted? %>
+              Account Owner: <%= @contact.account.user.fullname %>
+            <% end %>
+          </p>
         </div>
         <div class="modal-footer">
           <%= f.button :submit, class: 'btn btn-primary' %>
