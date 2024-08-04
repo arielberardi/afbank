@@ -12,6 +12,7 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    include ActiveJob::TestHelper
     include FactoryBot::Syntax::Methods
     include ConfidenceCheck::ForMinitest
     include Devise::Test::IntegrationHelpers

@@ -12,7 +12,7 @@
         <%= link_to t('views.navbar.home'), authenticated_root_path, class: "nav-link #{active?(authenticated_root_path)}" %>
       </li>
       <li class="nav-item">
-        <%= link_to t('views.navbar.transfer'), '#', class: "nav-link #{active?('#')}" %>
+        <%= link_to t('views.navbar.transfer'), transfers_path, class: "nav-link #{active?('#')}" %>
       </li>
       <li class="nav-item">
         <%= link_to t('views.navbar.contacts'), contacts_path, class: "nav-link #{active?('#')}" %>

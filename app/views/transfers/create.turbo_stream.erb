@@ -1,0 +1,9 @@
+<%= turbo_stream.append 'transfers' do %>
+  <%= render @transfer %>
+<% end %>
+<!-- This will close the modal after submit -->
+<%= turbo_stream.after dom_id(@transfer) do %>
+  <%= javascript_tag do %>
+    document.dispatchEvent(new CustomEvent("modal:close"))
+  <% end %>
+<% end %>

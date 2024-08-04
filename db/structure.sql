@@ -136,6 +136,42 @@ ALTER SEQUENCE public.transactions_id_seq OWNED BY public.transactions.id;
 
 
 --
+-- Name: transfers; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.transfers (
+    id bigint NOT NULL,
+    sender_id bigint NOT NULL,
+    recipient_id bigint NOT NULL,
+    amount_cents integer NOT NULL,
+    currency character varying NOT NULL,
+    status character varying DEFAULT 'pending'::character varying NOT NULL,
+    created_at timestamp(6) with time zone NOT NULL,
+    updated_at timestamp(6) with time zone NOT NULL,
+    CONSTRAINT amount_cents_must_be_positive CHECK ((amount_cents > 0))
+);
+
+
+--
+-- Name: transfers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.transfers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: transfers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.transfers_id_seq OWNED BY public.transfers.id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -205,6 +241,13 @@ ALTER TABLE ONLY public.transactions ALTER COLUMN id SET DEFAULT nextval('public
 
 
 --
+-- Name: transfers id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.transfers ALTER COLUMN id SET DEFAULT nextval('public.transfers_id_seq'::regclass);
+
+
+--
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -249,6 +292,14 @@ ALTER TABLE ONLY public.schema_migrations
 
 ALTER TABLE ONLY public.transactions
     ADD CONSTRAINT transactions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: transfers transfers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.transfers
+    ADD CONSTRAINT transfers_pkey PRIMARY KEY (id);
 
 
 --
@@ -302,6 +353,20 @@ CREATE INDEX index_transactions_on_sender_id ON public.transactions USING btree 
 
 
 --
+-- Name: index_transfers_on_recipient_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_transfers_on_recipient_id ON public.transfers USING btree (recipient_id);
+
+
+--
+-- Name: index_transfers_on_sender_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_transfers_on_sender_id ON public.transfers USING btree (sender_id);
+
+
+--
 -- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -337,6 +402,14 @@ CREATE UNIQUE INDEX index_users_on_username ON public.users USING btree (usernam
 
 
 --
+-- Name: transfers fk_rails_29d6daaff8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.transfers
+    ADD CONSTRAINT fk_rails_29d6daaff8 FOREIGN KEY (sender_id) REFERENCES public.accounts(id);
+
+
+--
 -- Name: contacts fk_rails_8d2134e55e; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -369,12 +442,21 @@ ALTER TABLE ONLY public.contacts
 
 
 --
+-- Name: transfers fk_rails_e736543938; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.transfers
+    ADD CONSTRAINT fk_rails_e736543938 FOREIGN KEY (recipient_id) REFERENCES public.accounts(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20240803143659'),
 ('20240731165704'),
 ('20240728180902'),
 ('20240727161709'),

@@ -26,6 +26,14 @@ class AccountTest < ActiveSupport::TestCase
     assert have_many(:contacts)
   end
 
+  test 'have many sent transfers' do
+    assert have_many(:sent_transfers)
+  end
+
+  test 'have many received transfers' do
+    assert have_many(:received_transfers)
+  end
+
   test '#balance returns balance with cents' do
     balance = @account.balance_cents / 100
     assert_equal @account.balance, balance.round

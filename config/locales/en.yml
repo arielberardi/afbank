@@ -63,6 +63,23 @@ en:
       transfer: "Transfer"
       contacts: "Contacts"
       sign_out: "Sign out"
+    transfer:
+      create:
+        notice: "Transfer was successfully created"
+      show:
+        title: "Transfer #%{number} details"
+        status: "Status"
+        amount: "Amount"
+        from_account: "From account"
+        payed_to: "Transfered to"
+        date: "Date"
+      new:
+        title: "New transfer"
+      form:
+        contact: "Contact"
+        contact_prompt: "Select contact..."
+        sender_account_id: "Your Account number:"
+        sender_account_prompt: "Select your account to use..."
   activerecord:
     attributes:
       user:
@@ -88,6 +105,14 @@ en:
           cancelled: "Cancelled"
           completed: "Completed"
           failed: "Failed"
+      transfer:
+        amount_cents: "Amount"
+        status:
+          pending: "Pending"
+          completed: "Completed"
+          failed: "Failed"
+        error:
+          same_recipient: "is the same account as the sender"
       contact:
         name: "Alias"
         account: "Account Number"
