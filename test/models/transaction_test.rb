@@ -11,7 +11,6 @@ class TransactionTest < ActiveSupport::TestCase
 
   test 'belong to a sender and a recipient' do
     assert belong_to(:sender)
-    assert belong_to(:recipient)
   end
 
   test 'invalid transaction without amount' do

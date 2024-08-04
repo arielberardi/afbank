@@ -9,7 +9,7 @@ class ContactTest < ActiveSupport::TestCase
     assert @contact.valid?
   end
 
-  test 'user can not repeate same contact' do
+  test 'user can not repeat same contact' do
     repeated_contact = FactoryBot.build(:contact, user: @contact.user, account: @contact.account)
     assert repeated_contact.invalid?
   end
