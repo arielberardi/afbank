@@ -1,7 +1,7 @@
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
-require 'confidence_check/for_minitest'
+require 'sidekiq/testing'
 
 module ActiveSupport
   class TestCase
@@ -14,8 +14,8 @@ module ActiveSupport
     # Add more helper methods to be used by all tests here...
     include ActiveJob::TestHelper
     include FactoryBot::Syntax::Methods
-    include ConfidenceCheck::ForMinitest
     include Devise::Test::IntegrationHelpers
+    include Sidekiq::Worker
   end
 end
 

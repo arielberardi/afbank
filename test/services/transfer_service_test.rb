@@ -13,7 +13,7 @@ class TransferServiceTest < ActiveSupport::TestCase
 
     assert transfer.pending?
     assert_equal Transfer.last, transfer
-    assert_enqueued_jobs 1
+    assert_enqueued_jobs 1, only: TransferExecutionJob
   end
 
   test 'cancel the operation if account does not have funds' do

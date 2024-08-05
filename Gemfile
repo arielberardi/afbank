@@ -30,7 +30,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'confidence-check'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
 end
