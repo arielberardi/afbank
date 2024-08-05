@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: %i[edit update destroy]
+  before_action :set_account, only: %i[create update]
 
   def index
     @contacts = current_user.contacts.includes(account: :user)
@@ -12,7 +13,7 @@ class ContactsController < ApplicationController
   def edit; end
 
   def create
-    @contact = current_user.contacts.new(contact_params)
+    @contact = current_user.contacts.new(name: contact_params[:name], account: @account)
 
     if @contact.save
       respond_to do |format|
@@ -25,7 +26,7 @@ class ContactsController < ApplicationController
   end
 
   def update
-    if @contact.update(contact_params)
+    if @contact.update(name: contact_params[:name], account: @account)
       respond_to do |format|
         format.html { redirect_to contacts_url, notice: I18n.t('controller.contacts.updated') }
         format.turbo_stream
@@ -48,6 +49,11 @@ class ContactsController < ApplicationController
 
   def set_contact
     @contact = current_user.contacts.find(params[:id])
+  end
+
+  def set_account
+    # Find account from account_id to avoid mass assignment risks (Brakeman)
+    @account = Account.find(contact_params[:account_id])
   end
 
   def contact_params
